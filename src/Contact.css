@@ -1,0 +1,57 @@
+.contact{
+    display: flex;
+    box-shadow:  13px 13px 18px #115055,
+              -13px -13px 18px #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+    margin: 50px;
+    background-color: rgb(125, 255, 233);
+}
+
+.contact__left {
+    display: blocks;
+    padding: 20px;
+    border-right: 2px solid rgb(5, 163, 211) ;
+    width: 50%;
+}
+.contact__right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+
+
+.Contact__input{
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    outline: none;
+    border: none;
+    padding-left:10px ;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.Query__input{
+    width: 80%;
+    align-items: center;
+    outline: none;
+    border: none;
+    padding-left:10px ;
+    margin-top: 10px;
+    height: 80px;
+    border-radius: 3px;
+}
+
+.contact__right > Button {
+    width: 80%;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}

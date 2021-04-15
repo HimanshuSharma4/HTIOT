@@ -1,0 +1,11 @@
+.humidity{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+    background-color: aqua;
+}
+
+.humidity__gauge {
+    height: 100%;
+}

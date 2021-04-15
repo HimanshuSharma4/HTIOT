@@ -1,0 +1,32 @@
+* {
+    margin : 0;
+    padding: 0;
+    
+}
+
+.App {
+    align-items: center;
+    background: linear-gradient(to bottom right, rgb(204, 0, 255), rgb(255, 255, 0));  
+    /* background: -webkit-linear-gradient(to bottom right, rgb(255, 0, 0), rgb(255, 255, 0)); */
+
+  
+}
+
+.loader {
+    align-items: center;
+    background: white;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.loader > img {
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 5px solid gray;
+}

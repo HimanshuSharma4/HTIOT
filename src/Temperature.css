@@ -1,0 +1,23 @@
+.temperature{
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    width: fit-content;
+    border-radius: 30px;
+    background-color: beige;
+}
+
+.temperature__gauge 
+{
+    background-color: cornflowerblue;
+    margin-bottom: -10px;
+    height: 450px;
+}
+
+.temperature__data{
+    height: 100%;
+    width: 100%;
+    margin-top: -30px;
+    background-color: beige;
+}
