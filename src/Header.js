@@ -6,6 +6,7 @@ import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import Home from './Home';
 import Humidity from './Humidity';
 import Temperature from './Temperature';
+import Extras from './Extras';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
 import SubjectIcon from '@material-ui/icons/Subject';
 import Controls from './Controls';
@@ -44,18 +45,19 @@ function Header() {
             </div>
           
             <div className={activeTab === 'Humidity' ? "content  active-content" : "content"}>
-                <Temperature />
-                <Humidity />
+                    <div className="Data" >
+                                <Temperature /> 
+                                <Humidity />
+                            </div>
+                    <div className="display">
+                        <Extras />
+                    </div>
             </div>
             
             <div className={activeTab === 'Controls' ? "content  active-content" : "content"}>
                <Controls />
-            </div>
-
-                            
+            </div>              
         </div>
-
-        
     </div>
     )
 }

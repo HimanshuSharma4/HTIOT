@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import Switch from '@material-ui/core/Switch';
+// import Switch from '@material-ui/core/Switch';
 import './Home.css';
 import Card from './Card';
 import humidity from './assets/humidity.gif';
 import day from './assets/Day.gif';
 import night from './assets/night.gif';
-
+import Switch from 'react-neumorphic-toggle';
 import sunny from './assets/BS.gif';
 import cloudy from './assets/cloudsONLY.gif';
 import sc from './assets/SwC.gif';
 
-
 import firebase from './firebase';
-import Api from './Api';
+import ApiHome from './ApiHome';
 
 function Home() {
+    // const theme = {
+    //   color: '#55b9f3',
+    //   primaryShadowColor: '#489dcf',
+    //   secondaryShadowColor: '#62d5ff'
+    // };
 
     const [Connectivity, setConnectivity] = useState(0);
 
@@ -24,6 +28,7 @@ function Home() {
 
     const [StatusH, setStatusH] = useState([]);
     const [StatusT, setStatusT] = useState([]);
+    const [stateLS0, setStateLS0] = useState(0);
     const [state, setState] = useState(0);
 
     useEffect(() => {
@@ -35,10 +40,10 @@ function Home() {
 
 
 
-      // const LS0 = firebase.database().ref('LED_STATUS0');
-      //   LS0.on("value", snapshot => {
-      //     setStatus(snapshot.val());
-      //   })
+      const LS0 = firebase.database().ref('LED_STATUS0');
+        LS0.on("value", snapshot => {
+          setStateLS0(snapshot.val());
+        })
 
       const myitemsT = firebase.database().ref("Temperature");
       myitemsT.on("value", (snapshot) => {
@@ -48,7 +53,7 @@ function Home() {
 
       const conn = firebase.database().ref("Connectivity");
       conn.on("value", (snapshot) => {
-        setConnectivity(Object.values(snapshot.val()));
+        setConnectivity(snapshot.val());
       });
 
 
@@ -63,15 +68,21 @@ function Home() {
     const minus  = () => {
       firebase.database().ref().update({
         LED_STATUS0 : 0
+
+
+
+        
       });
     };
 
-    const handleChange = (event, val) => {
-      setState(val ? 0:1);
+    const handleChange = () => {
+      setState(state ? 0:1)
+      {
+      if (state) plus()
+      else minus()}
     };
 
-    if (state) minus()
-    else plus()
+
 
     return (
         
@@ -79,9 +90,9 @@ function Home() {
             <div className="Data_Overiew">
                 <Card Status__Pic={humidity}  Value={StatusH}  Unit = "%" title="Humidity" />
                 <div className="Current__Environment">
-                    {n>= 6 && n<20 ? <img src={day} /> : <img src={night} /> }
-                    <h3><Api /></h3>
-                    <p>New Delhi</p>
+                    {n>= 6 && n<20 ? <img src={day} alt=""/> : <img src={night} alt=""/> }
+                    <h3><ApiHome /></h3>
+                    <p style={{color : "#0984e3"}}>New Delhi</p>
                 </div>
 
                 <Card Status__Pic={
@@ -108,24 +119,12 @@ function Home() {
                     </div>
 
                     <div className="status__element">
-                    <h3> Check :</h3>
-                    <Switch
-                        defaultChecked
+                    <h3> Check : {stateLS0}</h3>
+
+                   <Switch
                         onChange={handleChange}
-                        color="default"
-                        // inputProps={{ 'aria-label': 'secondary checkbox' }}
-                    />
-                    </div>
-                </div>
-                <div className="Bottom__element">
-                    <div className="status__element">
-                        <h3> Humidity : </h3>
-                        <p> {StatusH} </p>
-                    </div>
-                
-                    <div className="status__element">
-                        <h3> Temperature : </h3>
-                        <p> {StatusT} Deg</p>
+                        // theme = {theme}
+                    />  
                     </div>
                 </div>
             </div>
